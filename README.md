@@ -63,7 +63,7 @@ Produces `patch.ffm`.
 
 Note: pass `-k` to keep the generated `.ffraw`; by default it is removed.
 
-### Unlinker
+### Unlinker (made for unlinking fastfiles made by linker specifically)
 
 Extracts assets from a fastfile.
 
