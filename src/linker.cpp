@@ -25,26 +25,15 @@ XAssetType asset_type_for_string(const std::string& type_str)
 		return XAssetType::LOCALIZE_ENTRY;
 	if (type_str == "rawfile")
 		return XAssetType::RAWFILE;
-	// DISABLED: Not fully implemented yet
-	// if (type_str == "physpreset")
-	// 	return XAssetType::PHYSPRESET;
-	// if (type_str == "map_ents")
-	// 	return XAssetType::MAP_ENTS;
 	if (type_str == "stringtable")
 		return XAssetType::STRINGTABLE;
-	// if (type_str == "addon_map_ents")
-	// 	return XAssetType::ADDON_MAP_ENTS;
 	return static_cast<XAssetType>(-1);
 }
 void init_asset_handlers_impl()
 {
-	// DISABLED: Not fully implemented yet
-	// asset_handlers[static_cast<int>(XAssetType::PHYSPRESET)] = {load_phys_preset, serialize_phys_preset, extract_phys_preset};
-	// asset_handlers[static_cast<int>(XAssetType::MAP_ENTS)] = {load_map_ents, serialize_map_ents, extract_map_ents};
 	asset_handlers[static_cast<int>(XAssetType::LOCALIZE_ENTRY)] = {load_localize_entry, serialize_localize_entry, extract_localize_entry};
 	asset_handlers[static_cast<int>(XAssetType::RAWFILE)] = {load_raw_file, serialize_raw_file, extract_raw_file};
 	asset_handlers[static_cast<int>(XAssetType::STRINGTABLE)] = {load_string_table, serialize_string_table, extract_string_table};
-	// asset_handlers[static_cast<int>(XAssetType::ADDON_MAP_ENTS)] = {load_addon_map_ents, serialize_addon_map_ents, extract_addon_map_ents};
 }
 
 void write_zone_memory_header(std::ofstream& fp, const XZoneMemory& mem)

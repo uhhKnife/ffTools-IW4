@@ -61,13 +61,9 @@ static const char* XAssetTypeToString(std::uint32_t t)
 	using X = XAssetType;
 	switch (static_cast<X>(t))
 	{
-	case X::PHYSPRESET: return "PHYSPRESET";
-	case X::PHYSCOLLMAP: return "PHYSCOLLMAP";
-	case X::MAP_ENTS: return "MAP_ENTS";
 	case X::LOCALIZE_ENTRY: return "LOCALIZE_ENTRY";
 	case X::RAWFILE: return "RAWFILE";
 	case X::STRINGTABLE: return "STRINGTABLE";
-	case X::ADDON_MAP_ENTS: return "ADDON_MAP_ENTS";
 	default: return "UNKNOWN";
 	}
 }
@@ -267,15 +263,6 @@ int unlink_fastfile(const std::string& infile, const std::string& outdir)
 
 		switch (type)
 		{
-			// DISABLED: Not fully implemented yet
-			// case static_cast<std::uint32_t>(XAssetType::PHYSPRESET):
-			// 	if (extract_phys_preset(dest, dest_len, pos, outdir, csvfile) < 0)
-			// 		return -1;
-			// 	break;
-			// case static_cast<std::uint32_t>(XAssetType::MAP_ENTS):
-			// 	if (extract_map_ents(dest, dest_len, pos, outdir, csvfile) < 0)
-			// 		return -1;
-			// 	break;
 			case static_cast<std::uint32_t>(XAssetType::LOCALIZE_ENTRY):
 				if (extract_localize_entry(dest, dest_len, pos, outdir, csvfile) < 0)
 					return -1;
@@ -288,10 +275,6 @@ int unlink_fastfile(const std::string& infile, const std::string& outdir)
 				if (extract_string_table(dest, dest_len, pos, outdir, csvfile) < 0)
 					return -1;
 				break;
-			// case static_cast<std::uint32_t>(XAssetType::ADDON_MAP_ENTS):
-			// 	if (extract_addon_map_ents(dest, dest_len, pos, outdir, csvfile) < 0)
-			// 		return -1;
-			// 	break;
 			default:
 				std::cout << "Skipping unknown asset type: " << XAssetTypeToString(type) << " (0x" << std::hex << type << std::dec << ")" << std::endl;
 				break;

@@ -1,5 +1,5 @@
 #include "assets.hpp"
-#include "assets_common.hpp"
+#include "assets.hpp"
 #include "util.hpp"
 #include "binary_io.hpp"
 #include <filesystem>

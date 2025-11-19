@@ -88,8 +88,6 @@
     <ClCompile Include="..\src\handlers\localize.cpp" />
     <ClCompile Include="..\src\handlers\rawfile.cpp" />
     <ClCompile Include="..\src\handlers\stringtable.cpp" />
-    <ClCompile Include="..\src\handlers\mapents.cpp" />
-    <ClCompile Include="..\src\handlers\phys.cpp" />
     <ClCompile Include="..\src\include\miniz.c">
       <LanguageStandard Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">stdcpp17</LanguageStandard>
       <LanguageStandard Condition="'$(Configuration)|$(Platform)'=='Release|x64'">stdcpp17</LanguageStandard>

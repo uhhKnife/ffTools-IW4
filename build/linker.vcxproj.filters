@@ -9,12 +9,6 @@
     <ClCompile Include="..\src\handlers\localize.cpp">
       <Filter>handlers</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\handlers\mapents.cpp">
-      <Filter>handlers</Filter>
-    </ClCompile>
-    <ClCompile Include="..\src\handlers\phys.cpp">
-      <Filter>handlers</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\handlers\rawfile.cpp">
       <Filter>handlers</Filter>
     </ClCompile>

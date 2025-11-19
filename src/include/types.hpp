@@ -19,20 +19,6 @@ struct RawFile
 	const char* buffer;
 };
 
-struct PhysPreset
-{
-	const char* name;
-	int len;
-	const char* buffer;
-};
-
-struct MapEnts
-{
-	const char* name;
-	int len;
-	const char* buffer;
-};
-
 struct StringTableCell
 {
 	const char* string;
@@ -47,21 +33,12 @@ struct StringTable
 	StringTableCell* values;
 };
 
-struct AddonMapEnts
-{
-	const char* name;
-	int len;
-	const char* buffer;
-};
-
 union XAssetHeader
 {
 	LocalizeEntry* localize;
 	RawFile* rawfile;
-	PhysPreset* physpreset;
-	MapEnts* mapents;
 	StringTable* stringtable;
-	AddonMapEnts* addonmapents;
+
 	void* data;
 };
 

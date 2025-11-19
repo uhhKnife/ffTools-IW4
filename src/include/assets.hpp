@@ -3,7 +3,20 @@
 #include <string>
 #include <memory>
 #include <fstream>
+#include <filesystem>
+#include <unordered_set>
+
 #include "types.hpp"
+
+
+namespace fs = std::filesystem;
+
+bool read_string(const unsigned char* buf, size_t buf_len, size_t& pos, std::string& out);
+extern std::unordered_set<std::string> g_emitted_localize_prefixes;
+void ensure_parent_dirs(const fs::path& filepath);
+std::string trim_and_lower(std::string s);
+std::string normalize_basename_for_compare(const std::string& path);
+std::string sanitize_for_print(const std::string& s);
 
 struct Asset
 {
@@ -40,18 +53,6 @@ int load_raw_file(XAssetType type, const std::string& basename, const std::strin
 int serialize_raw_file(std::ofstream& fp, const XAssetHeader& asset);
 int extract_raw_file(const unsigned char* buf, size_t buf_len, size_t& pos, const std::string& outdir, std::ofstream& csvfile);
 
-int load_phys_preset(XAssetType type, const std::string& basename, const std::string& path);
-int serialize_phys_preset(std::ofstream& fp, const XAssetHeader& asset);
-int extract_phys_preset(const unsigned char* buf, size_t buf_len, size_t& pos, const std::string& outdir, std::ofstream& csvfile);
-
-int load_map_ents(XAssetType type, const std::string& basename, const std::string& path);
-int serialize_map_ents(std::ofstream& fp, const XAssetHeader& asset);
-int extract_map_ents(const unsigned char* buf, size_t buf_len, size_t& pos, const std::string& outdir, std::ofstream& csvfile);
-
 int load_string_table(XAssetType type, const std::string& basename, const std::string& path);
 int serialize_string_table(std::ofstream& fp, const XAssetHeader& asset);
 int extract_string_table(const unsigned char* buf, size_t buf_len, size_t& pos, const std::string& outdir, std::ofstream& csvfile);
-
-int load_addon_map_ents(XAssetType type, const std::string& basename, const std::string& path);
-int serialize_addon_map_ents(std::ofstream& fp, const XAssetHeader& asset);
-int extract_addon_map_ents(const unsigned char* buf, size_t buf_len, size_t& pos, const std::string& outdir, std::ofstream& csvfile);
