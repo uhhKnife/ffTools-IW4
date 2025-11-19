@@ -151,8 +151,8 @@ int write_fastfile(const std::string& input_filename, const std::string& output_
 	}
 
 	// write magic
-	const char mw2_magic[8] = {'I','W','f','f','u','1','0','0'};
-	fout.write(mw2_magic, sizeof(mw2_magic));
+	const char iw4_magic[8] = {'I','W','f','f','u','1','0','0'};
+	fout.write(iw4_magic, sizeof(iw4_magic));
 
 	// version
 	binary_io::write_be32(fout, 0x000000FD);

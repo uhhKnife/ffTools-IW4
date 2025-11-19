@@ -47,9 +47,9 @@ static size_t find_zlib_header_from(const unsigned char* data, size_t len, size_
 
 static bool read_prefix(const unsigned char* data, size_t len, ff_header& out, size_t& prefix_end)
 {
-	const unsigned char mw2_magic[] = {'I','W','f','f','u','1','0','0'};
-	if (len < sizeof(mw2_magic)) return false;
-	if (std::memcmp(data, mw2_magic, sizeof(mw2_magic)) != 0) return false;
+	const unsigned char iw4_magic[] = {'I','W','f','f','u','1','0','0'};
+	if (len < sizeof(iw4_magic)) return false;
+	if (std::memcmp(data, iw4_magic, sizeof(iw4_magic)) != 0) return false;
 
 	(void)out;
 	prefix_end = std::min<size_t>(len, 0x1C);
@@ -85,8 +85,8 @@ bool read_tail(const unsigned char* data, size_t len, ff_header& out, size_t sta
 
 size_t get_zlib_offset(const unsigned char* data, size_t len, bool &is_mw2)
 {
-	const unsigned char mw2_magic[] = {'I','W','f','f','u','1','0','0'};
-	if (len >= sizeof(mw2_magic) && std::memcmp(data, mw2_magic, sizeof(mw2_magic)) == 0)
+	const unsigned char iw4_magic[] = {'I','W','f','f','u','1','0','0'};
+	if (len >= sizeof(iw4_magic) && std::memcmp(data, iw4_magic, sizeof(iw4_magic)) == 0)
 	{
 		is_mw2 = true;
 		size_t start = 0x18;
