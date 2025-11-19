@@ -5,8 +5,8 @@ A tool for working with MW2 Alpha 482 FastFiles (.ff/.ffm format). Provides link
 ## Building
 
 ### Requirements
-- Visual Studio 2026
-- C++18 or later
+- Visual Studio 2022
+- C++17 or later
 
 ### Build Instructions
 
