@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="..\src\linker.cpp" />
+    <ClCompile Include="..\src\assets.cpp" />
+    <ClCompile Include="..\src\include\miniz.c">
+      <Filter>include</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\handlers\localize.cpp">
+      <Filter>handlers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\handlers\mapents.cpp">
+      <Filter>handlers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\handlers\phys.cpp">
+      <Filter>handlers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\handlers\rawfile.cpp">
+      <Filter>handlers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\handlers\stringtable.cpp">
+      <Filter>handlers</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\include\assets.hpp">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\binary_io.hpp">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\compression.hpp">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\miniz.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\types.hpp">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\include\util.hpp">
+      <Filter>include</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="handlers">
+      <UniqueIdentifier>{d8396850-2a96-4e00-b33a-85f581ed2089}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include">
+      <UniqueIdentifier>{f9da99cf-6e77-4120-9685-fb3c9f0b335c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
