@@ -1,24 +1,14 @@
-name: MSBuild
+name: msbuild v145
 
 on:
   push:
     branches: [ "main" ]
-    paths-ignore:
-      - ".gitignore"
-      - "README.md"
   pull_request:
     branches: [ "main" ]
-    paths-ignore:
-      - ".gitignore"
-      - "README.md"
-      - ".github/**"
 
 env:
   SOLUTION_FILE_PATH: build/ffTools.sln
   BUILD_CONFIGURATION: Release
-
-permissions:
-  contents: read
 
 jobs:
   build:
@@ -27,19 +17,32 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
-    - name: add msbuild to path
-      uses: microsoft/setup-msbuild@v1.0.2
+    - name: install vs build tools 2026 + v145
+      shell: powershell
+      run: |
+        choco install visualstudio2022buildtools --yes --package-parameters "--add Microsoft.VisualStudio.Workload.VCTools --includeRecommended --includeOptional"
+        $installer = 'C:\Program Files (x86)\Microsoft Visual Studio\Installer\vs_installer.exe'
+        & $installer modify `
+          --installPath "C:\BuildTools2022" `
+          --add Microsoft.VisualStudio.Workload.VCTools `
+          --add Microsoft.VisualStudio.Component.VC.v145 `
+          --quiet --wait
 
-    - name: restore nuget packages
-      working-directory: ${{env.GITHUB_WORKSPACE}}
-      run: nuget restore ${{env.SOLUTION_FILE_PATH}}
+    - name: use v145 toolchain
+      shell: powershell
+      run: |
+        & "C:\BuildTools2022\VC\Auxiliary\Build\vcvarsall.bat" x64 14.50
 
-    - name: build solution
-      working-directory: ${{env.GITHUB_WORKSPACE}}
-      run: msbuild /m /p:Configuration=${{env.BUILD_CONFIGURATION}} ${{env.SOLUTION_FILE_PATH}}
+    - name: restore
+      run: nuget restore $env:SOLUTION_FILE_PATH
+
+    - name: build (v145)
+      shell: cmd
+      run: |
+        "C:\BuildTools2022\MSBuild\Current\Bin\MSBuild.exe" %SOLUTION_FILE_PATH% /m /p:Configuration=%BUILD_CONFIGURATION%
 
     - name: upload release build
       uses: actions/upload-artifact@v4
       with:
         name: ffTools-release
-        path: build/bin/${{env.BUILD_CONFIGURATION}}/
+        path: build/bin/Release/
