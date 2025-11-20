@@ -1,13 +1,14 @@
-#include "assets.hpp"
-#include "util.hpp"
-#include "binary_io.hpp"
-#include "compression.hpp"
 #include <filesystem>
 #include <fstream>
 #include <iostream>
 #include <algorithm>
 #include <cstring>
 #include <unordered_set>
+
+#include "assets.hpp"
+#include "util.hpp"
+#include "binary_io.hpp"
+#include "compression.hpp"
 
 namespace fs = std::filesystem;
 
